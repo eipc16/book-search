@@ -1,0 +1,46 @@
+.details--view {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    &>.details--content {
+        box-shadow: 0 10px 20px rgba(#000, .19), 0 6px 6px rgba(#000, .23);
+        width: 65%;
+        margin-top: 100px;
+        margin-bottom: 100px;
+        padding: 10px 30px 10px 30px;
+        &>.details--header {
+            &>.title {
+                font-family: "Book Antiqua", Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+            }
+            &>.authors {
+                display: flex;
+                &>.authors--label {
+                    padding-right: 10px;
+                }
+            }
+        }
+        &>.details--book--text {
+            & pre {
+                white-space: pre-wrap;
+                /* css-3 */
+                white-space: -moz-pre-wrap;
+                /* Mozilla, since 1999 */
+                white-space: -pre-wrap;
+                /* Opera 4-6 */
+                white-space: -o-pre-wrap;
+                /* Opera 7 */
+                word-wrap: break-word;
+                text-align: justify;
+                font-family: "Book Antiqua", Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+                font-size: 18px;
+                font-style: normal;
+                font-variant: normal;
+                // font-weight: 700;
+                line-height: 26.4px;
+            }
+            & a {
+                background-color: lightyellow;
+            }
+        }
+    }
+}

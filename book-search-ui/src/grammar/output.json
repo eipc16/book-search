@@ -1,0 +1,43 @@
+{
+ "_source": [
+  "id",
+  "title",
+  "language"
+ ],
+ "query": {
+  "bool": {
+   "must": [
+    {
+     "multi_match": {
+      "query": "b",
+      "fields": [
+       "title^3",
+       "content"
+      ],
+      "type": "cross_fields"
+     }
+    },
+    {
+     "bool": {
+      "should": [
+       {
+        "bool": {
+         "must_not": {
+          "match": {
+           "title": "a"
+          }
+         }
+        }
+       },
+       {
+        "match": {
+         "content": "b"
+        }
+       }
+      ]
+     }
+    }
+   ]
+  }
+ }
+}

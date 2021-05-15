@@ -1,0 +1,682 @@
+{
+    "info": {
+        "_postman_id": "866a4aab-1f06-4784-9365-7d1ba94c38f6",
+        "name": "SWI",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [{
+            "name": "Delete books index",
+            "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:9200/books",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "9200",
+                    "path": [
+                        "books"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Create books index",
+            "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"settings\": {\n        \"number_of_shards\": 1\n    },\n    \"mappings\": {\n        \"properties\": {\n            \"authors\": {\n                \"type\": \"text\",\n                \"fields\": {\n                    \"raw\": {\n                        \"type\": \"keyword\"\n                    }\n                }\n            },\n            \"content\": {\n                \"type\": \"text\"\n            },\n            \"date_issued\": {\n                \"type\": \"date\"\n            },\n            \"id\": {\n                \"type\": \"long\"\n            },\n            \"language\": {\n                \"type\": \"keyword\"\n            },\n            \"num_downloads\": {\n                \"type\": \"long\"\n            },\n            \"subjects\": {\n                \"type\": \"text\",\n                \"fields\": {\n                    \"raw\": {\n                        \"type\": \"keyword\"\n                    }\n                }\n            },\n            \"title\": {\n                \"type\": \"text\",\n                \"fields\": {\n                    \"raw\": {\n                        \"type\": \"keyword\"\n                    }\n                }\n            },\n            \"type\": {\n                \"type\": \"text\",\n                \"fields\": {\n                    \"raw\": {\n                        \"type\": \"keyword\"\n                    }\n                }\n            }\n        }\n    }\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "http://localhost:9200/books",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "9200",
+                    "path": [
+                        "books"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Crearte document",
+            "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n        \"id\": 1,\n        \"date_issued\": \"2003-11-01\",\n        \"num_downloads\": 13,\n        \"type\": \"Text\",\n        \"language\": \"en\",\n        \"title\": \"Punchinello, Volume 1, No. 24, September 10, 1870\",\n        \"authors\": [\n            \"Verschillende\",\n            \"Various\"\n        ],\n        \"subjects\": [\n            \"American wit and humor\",\n            \"AP\",\n            \"Periodicals\"\n        ]\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "http://localhost:9200/books/_doc/1",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "9200",
+                    "path": [
+                        "books",
+                        "_doc",
+                        "1"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Get document",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:9200/books/_doc/1",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "9200",
+                    "path": [
+                        "books",
+                        "_doc",
+                        "1"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Get mapping",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": ""
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Node stats",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "localhost:9200/_nodes/stats",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "9200",
+                    "path": [
+                        "_nodes",
+                        "stats"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Cluster stats",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "localhost:9200/_cluster/stats",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "9200",
+                    "path": [
+                        "_cluster",
+                        "stats"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Index stats",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "localhost:9200/books/_stats?pretty=true",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "9200",
+                    "path": [
+                        "books",
+                        "_stats"
+                    ],
+                    "query": [{
+                        "key": "pretty",
+                        "value": "true"
+                    }]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Search Terms",
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"query\": {\n        \"match\": {\n            \"content\": \"cat\"\n        }\n    }\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "localhost:9200/books/_search",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "9200",
+                    "path": [
+                        "books",
+                        "_search"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Search Phrase",
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"query\": {\n        \"match_phrase\": {\n            \"content\": \"black cat\"\n        }\n    }\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "localhost:9200/books/_search",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "9200",
+                    "path": [
+                        "books",
+                        "_search"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Search Phrase Copy",
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"query\": {\n        \"match_phrase\": {\n            \"content\": \"black cat\"\n        }\n    }\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "localhost:9200/books/_search",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "9200",
+                    "path": [
+                        "books",
+                        "_search"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Search Bool",
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"query\": {\n        \"bool\": {\n            \"must\": [\n                {\n                    \"match_phrase\": {\n                        \"content\": \"black cat\"\n                    }\n                }\n            ],\n            \"must_not\": [\n                {\n                    \"match\": {\n                        \"content\": \"dog\"\n                    }\n                }\n            ]\n        }\n    }\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "localhost:9200/books/_search",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "9200",
+                    "path": [
+                        "books",
+                        "_search"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Query1",
+            "event": [{
+                "listen": "test",
+                "script": {
+                    "exec": [
+                        "function standardDeviation(values, avg) {",
+                        "    var squareDiffs = values.map(value => Math.pow(value - avg, 2));",
+                        "    return Math.sqrt(average(squareDiffs));",
+                        "}",
+                        "",
+                        "function average(data) {",
+                        "    return data.reduce((sum, value)=>sum + value) / data.length;",
+                        "}",
+                        "",
+                        "if (responseCode.code === 200 || responseCode.code === 201) {",
+                        "    var jsonData = pm.response.json();",
+                        "    var searchTime = jsonData.took;",
+                        "    response_array = globals['response_times_' + pm.info.requestName] ? JSON.parse(globals['response_times_' + pm.info.requestName]) : []",
+                        "    response_array.push(searchTime)",
+                        "    postman.setGlobalVariable(\"response_times_\" + pm.info.requestName, JSON.stringify(response_array))",
+                        "",
+                        "    response_average = average(response_array);",
+                        "    postman.setGlobalVariable('response_average_' + pm.info.requestName, response_average)",
+                        "",
+                        "    response_std = standardDeviation(response_array, response_average)",
+                        "    postman.setGlobalVariable('response_std_' + pm.info.requestName, response_std)",
+                        "}"
+                    ],
+                    "type": "text/javascript"
+                }
+            }],
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"query\": {\n        \"bool\": {\n            \"must\": [\n                {\n                    \"match_phrase\": {\n                        \"content\": \"black cat\"\n                    }\n                },\n                {\n                    \"match_phrase_prefix\": {\n                        \"title\": \"The\"\n                    }\n                }\n            ],\n            \"filter\": [\n                {\n                    \"range\": {\n                        \"date_issued\": {\n                            \"gt\": \"2000-02-01\",\n                            \"lt\": \"2010-03-02\"\n                        }\n                    }\n                },\n                {\n                    \"term\": {\n                        \"language\": \"en\"\n                    }\n                }\n            ]\n        }\n    }\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "localhost:9200/books/_search",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "9200",
+                    "path": [
+                        "books",
+                        "_search"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Query2",
+            "event": [{
+                    "listen": "prerequest",
+                    "script": {
+                        "exec": [
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "function standardDeviation(values, avg) {",
+                            "    var squareDiffs = values.map(value => Math.pow(value - avg, 2));",
+                            "    return Math.sqrt(average(squareDiffs));",
+                            "}",
+                            "",
+                            "function average(data) {",
+                            "    return data.reduce((sum, value)=>sum + value) / data.length;",
+                            "}",
+                            "",
+                            "if (responseCode.code === 200 || responseCode.code === 201) {",
+                            "    var jsonData = pm.response.json();",
+                            "    var searchTime = jsonData.took;",
+                            "    response_array = globals['response_times_' + pm.info.requestName] ? JSON.parse(globals['response_times_' + pm.info.requestName]) : []",
+                            "    response_array.push(searchTime)",
+                            "    postman.setGlobalVariable(\"response_times_\" + pm.info.requestName, JSON.stringify(response_array))",
+                            "",
+                            "    response_average = average(response_array);",
+                            "    postman.setGlobalVariable('response_average_' + pm.info.requestName, response_average)",
+                            "",
+                            "    response_std = standardDeviation(response_array, response_average)",
+                            "    postman.setGlobalVariable('response_std_' + pm.info.requestName, response_std)",
+                            "}"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"query\": {\n        \"bool\": {\n            \"must\": [\n                {\n                    \"match\": {\n                        \"content\": \"Sir\"\n                    }\n                },\n                {\n                    \"match\": {\n                        \"title\": \"book\"\n                    }\n                }\n            ]\n        }\n    }\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "localhost:9200/books/_search",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "9200",
+                    "path": [
+                        "books",
+                        "_search"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Query3",
+            "event": [{
+                "listen": "test",
+                "script": {
+                    "exec": [
+                        "function standardDeviation(values, avg) {",
+                        "    var squareDiffs = values.map(value => Math.pow(value - avg, 2));",
+                        "    return Math.sqrt(average(squareDiffs));",
+                        "}",
+                        "",
+                        "function average(data) {",
+                        "    return data.reduce((sum, value)=>sum + value) / data.length;",
+                        "}",
+                        "",
+                        "if (responseCode.code === 200 || responseCode.code === 201) {",
+                        "    var jsonData = pm.response.json();",
+                        "    var searchTime = jsonData.took;",
+                        "    response_array = globals['response_times_' + pm.info.requestName] ? JSON.parse(globals['response_times_' + pm.info.requestName]) : []",
+                        "    response_array.push(searchTime)",
+                        "    postman.setGlobalVariable(\"response_times_\" + pm.info.requestName, JSON.stringify(response_array))",
+                        "",
+                        "    response_average = average(response_array);",
+                        "    postman.setGlobalVariable('response_average_' + pm.info.requestName, response_average)",
+                        "",
+                        "    response_std = standardDeviation(response_array, response_average)",
+                        "    postman.setGlobalVariable('response_std_' + pm.info.requestName, response_std)",
+                        "}"
+                    ],
+                    "type": "text/javascript"
+                }
+            }],
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"query\": {\n        \"multi_match\": {\n            \"query\": \"house\",\n            \"fields\": [\n                \"title^5\",\n                \"content\"\n            ],\n            \"type\": \"cross_fields\"\n        }\n    }\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "localhost:9200/books/_search",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "9200",
+                    "path": [
+                        "books",
+                        "_search"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Aggregations",
+            "event": [{
+                "listen": "test",
+                "script": {
+                    "exec": [
+                        "function standardDeviation(values, avg) {",
+                        "    var squareDiffs = values.map(value => Math.pow(value - avg, 2));",
+                        "    return Math.sqrt(average(squareDiffs));",
+                        "}",
+                        "",
+                        "function average(data) {",
+                        "    return data.reduce((sum, value)=>sum + value) / data.length;",
+                        "}",
+                        "",
+                        "if (responseCode.code === 200 || responseCode.code === 201) {",
+                        "    var jsonData = pm.response.json();",
+                        "    var searchTime = jsonData.took;",
+                        "    response_array = globals['response_times_' + pm.info.requestName] ? JSON.parse(globals['response_times_' + pm.info.requestName]) : []",
+                        "    response_array.push(searchTime)",
+                        "    postman.setGlobalVariable(\"response_times_\" + pm.info.requestName, JSON.stringify(response_array))",
+                        "",
+                        "    response_average = average(response_array);",
+                        "    postman.setGlobalVariable('response_average_' + pm.info.requestName, response_average)",
+                        "",
+                        "    response_std = standardDeviation(response_array, response_average)",
+                        "    postman.setGlobalVariable('response_std_' + pm.info.requestName, response_std)",
+                        "}"
+                    ],
+                    "type": "text/javascript"
+                }
+            }],
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"size\": 0,\n    \"aggs\": {\n        \"group_by_language\": {\n            \"terms\": {\n                \"field\": \"language\",\n                \"size\": 1000000,\n                \"order\": {\n                    \"average_num_downloads\": \"desc\"\n                }\n            },\n            \"aggs\": {\n                \"average_num_downloads\": {\n                    \"avg\": {\n                        \"field\": \"num_downloads\"\n                    }\n                }\n            }\n        }\n    }\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "localhost:9200/books/_search",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "9200",
+                    "path": [
+                        "books",
+                        "_search"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Aggregations Authors",
+            "event": [{
+                "listen": "test",
+                "script": {
+                    "exec": [
+                        "function standardDeviation(values, avg) {",
+                        "    var squareDiffs = values.map(value => Math.pow(value - avg, 2));",
+                        "    return Math.sqrt(average(squareDiffs));",
+                        "}",
+                        "",
+                        "function average(data) {",
+                        "    return data.reduce((sum, value)=>sum + value) / data.length;",
+                        "}",
+                        "",
+                        "if (responseCode.code === 200 || responseCode.code === 201) {",
+                        "    var jsonData = pm.response.json();",
+                        "    var searchTime = jsonData.took;",
+                        "    response_array = globals['response_times_' + pm.info.requestName] ? JSON.parse(globals['response_times_' + pm.info.requestName]) : []",
+                        "    response_array.push(searchTime)",
+                        "    postman.setGlobalVariable(\"response_times_\" + pm.info.requestName, JSON.stringify(response_array))",
+                        "",
+                        "    response_average = average(response_array);",
+                        "    postman.setGlobalVariable('response_average_' + pm.info.requestName, response_average)",
+                        "",
+                        "    response_std = standardDeviation(response_array, response_average)",
+                        "    postman.setGlobalVariable('response_std_' + pm.info.requestName, response_std)",
+                        "}"
+                    ],
+                    "type": "text/javascript"
+                }
+            }],
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"size\": 0,\n    \"aggs\": {\n        \"group_by_author\": {\n            \"terms\": {\n                \"field\": \"authors.raw\",\n                \"size\": 1000000\n            }\n        }\n    }\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "localhost:9200/books/_search?size=0",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "9200",
+                    "path": [
+                        "books",
+                        "_search"
+                    ],
+                    "query": [{
+                        "key": "size",
+                        "value": "0"
+                    }]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Aggregations Subjects",
+            "event": [{
+                "listen": "test",
+                "script": {
+                    "exec": [
+                        "function standardDeviation(values, avg) {",
+                        "    var squareDiffs = values.map(value => Math.pow(value - avg, 2));",
+                        "    return Math.sqrt(average(squareDiffs));",
+                        "}",
+                        "",
+                        "function average(data) {",
+                        "    return data.reduce((sum, value)=>sum + value) / data.length;",
+                        "}",
+                        "",
+                        "if (responseCode.code === 200 || responseCode.code === 201) {",
+                        "    var jsonData = pm.response.json();",
+                        "    var searchTime = jsonData.took;",
+                        "    response_array = globals['response_times_' + pm.info.requestName] ? JSON.parse(globals['response_times_' + pm.info.requestName]) : []",
+                        "    response_array.push(searchTime)",
+                        "    postman.setGlobalVariable(\"response_times_\" + pm.info.requestName, JSON.stringify(response_array))",
+                        "",
+                        "    response_average = average(response_array);",
+                        "    postman.setGlobalVariable('response_average_' + pm.info.requestName, response_average)",
+                        "",
+                        "    response_std = standardDeviation(response_array, response_average)",
+                        "    postman.setGlobalVariable('response_std_' + pm.info.requestName, response_std)",
+                        "}"
+                    ],
+                    "type": "text/javascript"
+                }
+            }],
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"size\": 0,\n    \"aggs\": {\n        \"group_by_subject\": {\n            \"terms\": {\n                \"field\": \"subjects.raw\",\n                \"size\": 1000000\n            }\n        }\n    }\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "localhost:9200/books/_search",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "9200",
+                    "path": [
+                        "books",
+                        "_search"
+                    ]
+                }
+            },
+            "response": []
+        }
+    ]
+}

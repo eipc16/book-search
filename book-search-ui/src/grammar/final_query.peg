@@ -1,0 +1,36 @@
+grammar Query
+
+    root        <- __* value:query __*                          <Value>
+    query       <- (value:operator __*)+                        <Or>
+
+    operator    <- excluding
+                 / including
+
+    excluding   <- "-" value:base                               <Excluding>
+    including   <- "" value:(and / base)                        <Value>
+
+    and         <- value:orable and_groups                      <And>
+    and_groups  <- (and_sep value:orable)+                      <Values>
+    orable      <- "" value:base                                <Value>
+
+    base        <- group
+                 / pair
+                 / exact
+                 / word
+
+    pair_word   <- exact
+                 / word
+
+    group       <- "(" root ")"                                 <Group>
+
+    pair        <- k:slug               sep v:pair_word          <Pair>
+    exact       <- '"' value:([^\"]*) '"'                       <Exactly>
+    word        <- "+"? [^\s\)\(]+                              <Text>
+
+    and_sep      <- __+ "AND" __+
+    date        <- d d d d "-" d d "-" d d
+    slug        <- [a-zA-Z0-9_]+
+    sep         <- ":"
+    integer     <- d d*
+    d           <- [0-9]
+    __          <- [\s]

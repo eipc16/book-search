@@ -1,0 +1,11 @@
+version: "2"
+services:
+  book-search-ui:
+    container_name: book-search-ui
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    environment:
+      NODE_ENV: production

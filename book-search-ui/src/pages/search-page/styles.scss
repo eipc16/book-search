@@ -1,0 +1,212 @@
+.search--view--body--header {
+    width: 100%;
+    &>.searchbox--container {
+        width: 100%;
+        padding-bottom: 15px;
+    }
+    &>.paging--info {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.results--container--loaded--results {
+    &>.book--result--entry {
+        margin-top: 10px;
+    }
+}
+
+.book--result--entry {
+    // box-shadow: 0 1px 3px rgba(#000, .12), 0 1px 2px rgba(#000, .24);
+    background-color: rgb(255, 255, 255);
+    padding: 1px 5px 2px 5px;
+    position: relative;
+    &>.entry--header {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        position: relative;
+        & .label {
+            padding-right: 10px;
+        }
+        &>.title {
+            // height: 0px;
+            font-size: larger;
+            font-family: "Book Antiqua", Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+            padding: 0;
+            padding-right: 100px;
+        }
+        &>.subjects,
+        &>.authors {
+            position: relative;
+            font-style: italic;
+            font-size: small;
+            display: flex;
+        }
+        &>.authors>.authors--inner,
+        &>.subjects>.subjects--inner {
+            display: flex;
+            flex-wrap: wrap;
+            padding-left: 2px;
+        }
+        &>.authors>.authors--inner {
+            padding-top: 10px;
+            &>.entry--authors {
+                margin-bottom: 5px;
+                margin-right: 5px;
+                &.last {
+                    margin-right: 0px;
+                }
+            }
+        }
+        &>.subjects>.subjects--inner {
+            &>.entry--subjects {
+                margin-right: 5px;
+                margin-bottom: 5px;
+                &.last {
+                    margin-right: 0px;
+                }
+            }
+        }
+        &>.read--button {
+            position: absolute;
+            right: 15px;
+            top: 5px;
+            text-decoration: none;
+            &>.read--button--btn {
+                width: 150px;
+                text-decoration: none;
+                color: green;
+            }
+        }
+        &>.subjects {
+            margin-top: 10px;
+        }
+        // &>.authors::after {
+        //     content: '';
+        //     width: 95%;
+        //     background-color: lightgray;
+        //     margin-left: -50%;
+        //     height: 1px;
+        //     position: absolute;
+        //     left: 50%;
+        //     bottom: 0;
+        // }
+    }
+    &>.entry--footer {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 35px;
+        font-size: small;
+        &>.language,
+        &>.type {
+            padding-right: 10px;
+        }
+        &>.type,
+        &>.language,
+        &>.num_downloads {
+            display: flex;
+            justify-content: flex-end;
+            align-content: center;
+            &>.label {
+                padding-right: 10px;
+                font-weight: bold;
+            }
+        }
+    }
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        margin-left: -45%;
+        width: 90%;
+        background-color: lightgray;
+        height: 1px;
+    }
+}
+
+.book--result--entry a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.entry--snippets {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    &>.snippet {
+        box-shadow: 0 1px 3px rgba(#000, .12), 0 1px 2px rgba(#000, .24);
+        width: 100%;
+        position: relative;
+        margin-top: 10px;
+        &>.snippet--content {
+            // display: inline-block;
+            width: 80%;
+            padding: 15px;
+            word-wrap: break-word;
+            text-align: justify;
+            font-family: "Book Antiqua", Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+            font-size: 15px;
+            font-style: normal;
+            font-variant: normal;
+            // font-weight: 700;
+            line-height: 26.4px;
+            &::after {
+                content: "\201D ...";
+            }
+            &::before {
+                content: "... \201C";
+            }
+            &>em {
+                background-color: rgb(250, 250, 199);
+            }
+        }
+        &>.snippet--launch--btn {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            // height: 100%;
+            // &>button {
+            //     height: 100%;
+            // }
+            & .MuiSvgIcon-root {
+                position: absolute;
+                top: 5px;
+                right: 5px;
+            }
+            & button {
+                height: 100%;
+                width: 100%;
+            }
+        }
+    }
+}
+
+.entry--element--refrence {
+    text-decoration: none;
+    &>.entry--element--refrence--container {
+        text-decoration: none;
+        // border: 1px solid black;
+        color: black;
+        background-color: rgb(243, 243, 243);
+        text-align: center;
+        border-radius: 12px;
+        font-size: 0.65rem;
+        padding: 5px 10px 5px 10px;
+        min-width: 50px;
+        &:hover {
+            background-color: rgb(226, 226, 226);
+            color: black;
+            font-weight: bold;
+        }
+    }
+}
+
+a {
+    text-decoration: none;
+}

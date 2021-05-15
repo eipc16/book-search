@@ -1,0 +1,23 @@
+## Cluster Settings
+cluster.name: ${ELASTIC_CLUSTER_NAME}
+node.name:    ${ELASTIC_NODE_NAME}
+network.host: 0.0.0.0
+transport.host: 0.0.0.0
+discovery.seed_hosts: ${ELASTIC_DISCOVERY_SEEDS}
+cluster.initial_master_nodes: ${ELASTIC_INIT_MASTER_NODE}
+
+## License
+xpack.license.self_generated.type: basic
+
+# Security
+xpack.security.enabled: false
+xpack.security.transport.ssl.enabled: false
+# xpack.security.transport.ssl.verification_mode: certificate
+# xpack.security.transport.ssl.keystore.path: certs/elastic-certificates.p12
+# xpack.security.transport.ssl.truststore.path: certs/elastic-certificates.p12
+
+http.cors.enabled : true
+http.cors.allow-origin: "*"
+http.cors.allow-methods: OPTIONS, HEAD, GET, POST, PUT, DELETE
+http.cors.allow-headers: X-Requested-With,X-Auth-Token,Content-Type,Content-Length
+http.cors.allow-credentials: true
