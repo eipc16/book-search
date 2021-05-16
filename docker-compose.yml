@@ -1,15 +1,7 @@
 version: '3.5'
 
-
-# will contain all elasticsearch data.
 volumes:
   elasticsearch-data:
-
-# secrets:
-#   elasticsearch.keystore:
-#     file: ./secrets/elasticsearch.keystore
-#   elastic.certificates:
-#     file: ./secrets/elastic-certificates.p12
 
 services:
   elasticsearch:
